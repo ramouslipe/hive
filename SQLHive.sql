@@ -21,7 +21,9 @@ CREATE TABLE Usuario (
 -- Criar tabela Desenvolvedora
 CREATE TABLE Desenvolvedora (
     id_desenvolvedora SERIAL PRIMARY KEY,
-    nome VARCHAR(100)
+    nome VARCHAR(100),
+	email VARCHAR(100),
+    senha VARCHAR(100)
 );
 
 -- Criar tabela Jogo (com campo preco)
