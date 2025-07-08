@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Usuário - Hive</title>
+    <link rel="stylesheet" href="../hive_theme.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo-link">
+                <img src="../logobranca.png" alt="Logo Hive">
+            </a>
+            <nav class="main-nav">
+                <a href="#">Loja</a>
+                <a href="#">Biblioteca</a>
+            </nav>
+            {% if session.get('nome') %}
+            <div class="user-session">
+                <span>{{ session['nome'] }}</span>
+                <a href="#" class="logout-link">Sair</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="form-container">
+            <h1>Adicionar Novo Usuário</h1>
+            <form method="POST">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required>
+
+                <div class="form-actions">
+                    <a href="#" class="btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
