@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='hive_theme.css') }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo-link"> <img src="{{ url_for('static', filename='logobranca.png') }}" alt="Logo Hive">
+            </a>
+
+            <nav class="main-nav">
+                <a href="#">Loja</a> <a href="#">Biblioteca</a> </nav>
+
+            {% if session.get('nome') %}
+            <div class="user-session">
+                <span>{{ session['nome'] }}</span>
+                <a href="#" class="logout-link">Sair</a> </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="main-container">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
