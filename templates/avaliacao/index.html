@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Avaliações - Hive</title>
+    <link rel="stylesheet" href="../hive_theme.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="../logobranca.png" alt="Logo Hive">
+            </a>
+            <nav class="main-nav">
+                </nav>
+            {% if session.get('nome') %}
+            <div class="user-session">
+                <span>{{ session['nome'] }}</span>
+                <a href="/logout" class="logout-link">Sair</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Avaliações</h1>
+            <a href="/avaliacoes/add" class="btn-primary">Nova Avaliação</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Comentário</th>
+                    <th>Usuário</th>
+                    <th>Jogo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in avaliacoes %}
+                <tr>
+                    <td>{{ a[0] }}</td>
+                    <td>{{ a[1] }}</td>
+                    <td>{{ a[2] }}</td>
+                    <td>{{ a[3] }}</td>
+                    <td>
+                        <a href="/avaliacoes/delete/{{ a[0] }}" class="btn-action btn-delete" onclick="return confirm('Excluir avaliação?')">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
