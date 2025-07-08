@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-background">
+    <div class="login-container">
+        <div class="login-box">
+            <img src="logobranca.png" alt="Logo da Plataforma" class="logo">
+            <h1>Entrar na Conta</h1>
+            <form method="POST">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required placeholder="Digite seu email">
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required placeholder="Digite sua senha">
+
+                <div class="lembrar-senha">
+                    <div>
+                        <input type="checkbox" id="lembrar">
+                        <label for="lembrar">Lembrar-me</label>
+                    </div>
+                    <a href="#">Esqueci a senha</a>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="mensagem-flash">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <div class="cadastro-link">
+                Não tem uma conta? <a href="#">Registre-se agora</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
