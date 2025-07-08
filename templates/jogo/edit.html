@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Jogo - Hive</title>
+    <link rel="stylesheet" href="../hive_theme.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <img src="../logobranca.png" alt="Logo Hive">
+            </a>
+            <nav class="main-nav">
+                <a href="/usuario/loja">Loja</a>
+                <a href="/usuario/biblioteca">Biblioteca</a>
+            </nav>
+            {% if session.get('nome') %}
+            <div class="user-session">
+                <span>{{ session['nome'] }}</span>
+                <a href="/logout" class="logout-link">Sair</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="form-container">
+            <h1>Editar Jogo</h1>
+            <form method="POST">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" value="{{ jogo[1] }}" required>
+
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" step="0.01" name="preco" value="{{ jogo[2] }}" required>
+
+                <label for="desenvolvedora">Desenvolvedora:</label>
+                <select name="id_desenvolvedora" id="desenvolvedora">
+                    {% for d in desenvolvedoras %}
+                    <option value="{{ d[0] }}" {% if d[0] == jogo[3] %}selected{% endif %}>{{ d[1] }}</option>
+                    {% endfor %}
+                </select>
+
+                <div class="form-actions">
+                    <a href="/jogos" class="btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn-primary">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
